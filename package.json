@@ -1,0 +1,23 @@
+{
+  "name": "mid-level-interview",
+  "version": "0.1.0",
+  "description": "This repository contains the skeleton Django `servers` application that you have been asked to complete. Below is a description of the problem, and what features you need to implement.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/discopatrick/mid-level-interview.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/discopatrick/mid-level-interview/issues"
+  },
+  "homepage": "https://github.com/discopatrick/mid-level-interview#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-shell": "^0.6.3"
+  }
+}
