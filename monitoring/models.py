@@ -1,4 +1,5 @@
 from django.db import models
 
 class LoginRecord(models.Model):
-    pass
+
+    user = models.CharField(default='', max_length=30)
