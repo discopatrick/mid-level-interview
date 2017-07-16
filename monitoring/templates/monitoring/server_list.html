@@ -15,8 +15,7 @@
         <ul>
           {% for login_record in server.loginrecord_set.all %}
             <li>
-              Login time: {{ login_record.datetime }}<br/>
-              user: {{ login_record.server_user.username }} - {{ login_record.server_user.email }}
+              {{ login_record.server_user.username }} - {{ login_record.server_user.email }} - {{ login_record.datetime }}
             </li>
           {% endfor %}
         </ul>
