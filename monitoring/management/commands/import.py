@@ -9,6 +9,7 @@ from monitoring.models import LoginRecord, ServerUser
 class Command(BaseCommand):
 
     USERNAME_INDEX = 2
+    CONTACT_INDEX = 4
     DATETIME_INDEX = 5
 
     DATETIME_FORMATS = [
@@ -66,6 +67,10 @@ class Command(BaseCommand):
                     username=username)
                 if created:
                     server_users_created += 1
+
+                contact_info = row[self.CONTACT_INDEX]
+                server_user.add_contact_info(contact_info)
+
                 LoginRecord.objects.create(server_user=server_user,
                                            datetime=parsed_datetime)
                 login_records_created += 1
