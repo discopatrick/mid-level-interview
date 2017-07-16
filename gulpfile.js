@@ -6,7 +6,7 @@ gulp.task('test', shell.task([
 ]));
 
 gulp.task('flake8', shell.task([
-  'venv3.6/bin/flake8 monitoring/ servers/'
+  'venv3.6/bin/flake8 monitoring/ servers/ --exclude migrations'
 ]));
 
 gulp.task('autopep8', shell.task([
