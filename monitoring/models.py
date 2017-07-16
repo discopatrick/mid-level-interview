@@ -9,3 +9,4 @@ class ServerUser(models.Model):
 class LoginRecord(models.Model):
 
     server_user = models.ForeignKey(ServerUser)
+    datetime = models.DateTimeField()
