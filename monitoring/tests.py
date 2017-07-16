@@ -16,4 +16,7 @@ class LoginRecordTestCase(TestCase):
 class ServerUserTestCase(TestCase):
 
     def test_create_user(self):
-        user = ServerUser.objects.create()
+        user = ServerUser.objects.create(username='patrick')
+        retrieved_user = ServerUser.objects.get(pk=user.pk)
+
+        self.assertEqual(retrieved_user.username, 'patrick')

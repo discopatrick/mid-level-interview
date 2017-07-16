@@ -8,4 +8,4 @@ class LoginRecord(models.Model):
 
 class ServerUser(models.Model):
 
-    pass
+    username = models.CharField(default='', max_length=30)
