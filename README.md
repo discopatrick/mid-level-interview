@@ -1,8 +1,12 @@
 # Technical test - candidate notes
 
+This code has been written and tested against Python 3.6.0
+
 The import command should be run with the CSV file as an argument, e.g.: `python manage.py import data/logins.csv`
 
 No database denormalisation has been performed, so the app is not as optimised as it could be.
+
+The tests produce a warning about naive datetimes, despite using the django.utils.timezone module to create datetime objects. More investigation is required.
 
 Please see TODO comments in the code for notes about other potential improvements.
 
