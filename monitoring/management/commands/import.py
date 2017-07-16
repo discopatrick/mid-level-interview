@@ -7,7 +7,7 @@ from monitoring.models import LoginRecord, ServerUser
 
 class Command(BaseCommand):
 
-    USERNAME_INDEX = 3
+    USERNAME_INDEX = 2
 
     def add_arguments(self, parser):
         parser.add_argument('file')
