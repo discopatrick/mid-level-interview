@@ -151,3 +151,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .idea/
+
+# Node stuff
+/node_modules/
