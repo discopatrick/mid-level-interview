@@ -17,12 +17,13 @@ class ServerUser(models.Model):
         self.save()
 
 
+class Server(models.Model):
+
+    ip = models.CharField(max_length=15)
+
+
 class LoginRecord(models.Model):
 
     server_user = models.ForeignKey(ServerUser)
     datetime = models.DateTimeField()
-
-
-class Server(models.Model):
-
-    ip = models.CharField(max_length=15)
+    server = models.ForeignKey(Server)
