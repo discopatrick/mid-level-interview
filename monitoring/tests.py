@@ -43,6 +43,5 @@ class ServerUserTestCase(TestCase):
         user = ServerUser.objects.create(username='patrick')
         user_email_address = 'example@example.com'
         user.add_contact_info(user_email_address)
-        user.save()
 
         self.assertEqual(user.email, user_email_address)

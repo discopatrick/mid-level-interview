@@ -14,6 +14,7 @@ class ServerUser(models.Model):
     def add_contact_info(self, info):
         if self.EMAIL_REGEX.match(info):
             self.email = info
+        self.save()
 
 
 class LoginRecord(models.Model):
