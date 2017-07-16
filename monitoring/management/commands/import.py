@@ -8,6 +8,7 @@ from monitoring.models import LoginRecord, ServerUser, Server
 
 class Command(BaseCommand):
 
+    SERVER_NAME_INDEX = 0
     SERVER_IP_INDEX = 1
     USERNAME_INDEX = 2
     CONTACT_INDEX = 4
@@ -78,6 +79,11 @@ class Command(BaseCommand):
                 )
                 if server_created:
                     servers_created += 1
+
+                server_name = row[self.SERVER_NAME_INDEX].strip()
+                if server_name:
+                    server.name = server_name
+                    server.save()
 
                 LoginRecord.objects.create(server_user=server_user,
                                            datetime=parsed_datetime,
