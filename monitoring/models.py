@@ -20,6 +20,7 @@ class ServerUser(models.Model):
 class Server(models.Model):
 
     ip = models.CharField(max_length=15)
+    name = models.CharField(max_length=30)
 
 
 class LoginRecord(models.Model):

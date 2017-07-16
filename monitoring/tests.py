@@ -22,9 +22,11 @@ class LoginRecordTestCase(TestCase):
     def test_add_datetime_to_loginrecord(self):
 
         user = ServerUser.objects.create(username='patrick')
+        server = Server.objects.create(ip='10.10.10.10')
         login_record = LoginRecord.objects.create(
             server_user=user,
-            datetime=timezone.now()
+            datetime=timezone.now(),
+            server=server
         )
         retrieved_login_record = LoginRecord.objects.get(pk=login_record.pk)
 
@@ -57,3 +59,11 @@ class ServerTestCase(TestCase):
         retrieved_server = Server.objects.get(pk=server.pk)
 
         self.assertEqual(retrieved_server.ip, '255.255.255.255')
+
+    def test_add_name_to_server(self):
+        server = Server.objects.create(ip='255.255.255.255')
+        server.name = 'my-server'
+        server.save()
+        retrieved_server = Server.objects.get(pk=server.pk)
+
+        self.assertEqual(retrieved_server.name, 'my-server')
