@@ -1,3 +1,7 @@
-from django.shortcuts import render  # noqa
+from django.views.generic import ListView
 
-# Create your views here.
+from .models import Server
+
+class ServerList(ListView):
+
+    model = Server

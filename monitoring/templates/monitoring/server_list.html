@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title>Server List</title>
+</head>
+
+<body>
+  <h1>Server List</h1>
+
+  <ul>
+    {% for server in server_list %}
+      <li>
+        {{ server.ip }}<br/>
+        Logins:<br/>
+        <ul>
+          {% for login_record in server.loginrecord_set.all %}
+            <li>
+              Login time: {{ login_record.datetime }}<br/>
+              user: {{ login_record.server_user.username }} - {{ login_record.server_user.email }}
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+
+</body>
+
+</html>
