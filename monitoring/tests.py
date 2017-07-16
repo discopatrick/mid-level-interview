@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import LoginRecord
+from .models import LoginRecord, ServerUser
 
 
 class LoginRecordTestCase(TestCase):
@@ -11,3 +11,9 @@ class LoginRecordTestCase(TestCase):
         retrieved_login_record = LoginRecord.objects.get(pk=login_record.pk)
 
         self.assertEqual(retrieved_login_record.user, 'patrick')
+
+
+class ServerUserTestCase(TestCase):
+
+    def test_create_user(self):
+        user = ServerUser.objects.create()
