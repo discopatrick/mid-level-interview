@@ -16,5 +16,9 @@ Including another URLconf
 from django.conf.urls import url  # noqa
 from django.contrib import admin  # noqa
 
+from monitoring import views as monitoring_views
+
 urlpatterns = [
+    url(r'^$', monitoring_views.ServerList.as_view(),
+        name='monitoring_server_list'),
 ]
