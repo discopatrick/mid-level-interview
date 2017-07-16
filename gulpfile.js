@@ -2,7 +2,17 @@ var gulp = require('gulp');
 var shell = require('gulp-shell');
 
 gulp.task('test', shell.task([
-  'echo testing'
+  'venv3.6/bin/python manage.py test'
 ]));
+
+gulp.task('watch', function(){
+  gulp.watch(
+    [
+      './servers/**/*.py',
+      './monitoring/**/*.py'
+    ],
+    ['test']
+  )
+})
 
 gulp.task('default', ['test']);
