@@ -9,6 +9,11 @@ gulp.task('flake8', shell.task([
   'venv3.6/bin/flake8 monitoring/ servers/'
 ]));
 
+gulp.task('autopep8', shell.task([
+    'venv3.6/bin/autopep8 monitoring/ --in-place --recursive --exclude migrations',
+    'venv3.6/bin/autopep8 servers/ --in-place --recursive'
+]));
+
 gulp.task('watch', function(){
   gulp.watch(
     [
