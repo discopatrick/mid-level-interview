@@ -24,4 +24,5 @@ class LoginRecord(models.Model):
 
 
 class Server(models.Model):
-    pass
+
+    ip = models.CharField(max_length=15)

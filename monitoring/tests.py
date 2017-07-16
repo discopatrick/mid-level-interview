@@ -50,4 +50,7 @@ class ServerUserTestCase(TestCase):
 class ServerTestCase(TestCase):
 
     def test_create_server(self):
-        user = Server.objects.create()
+        server = Server.objects.create(ip='255.255.255.255')
+        retrieved_server = Server.objects.get(pk=server.pk)
+
+        self.assertEqual(retrieved_server.ip, '255.255.255.255')
