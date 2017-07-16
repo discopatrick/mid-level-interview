@@ -3,11 +3,12 @@ from datetime import datetime
 
 from django.core.management import BaseCommand
 
-from monitoring.models import LoginRecord, ServerUser
+from monitoring.models import LoginRecord, ServerUser, Server
 
 
 class Command(BaseCommand):
 
+    SERVER_IP_INDEX = 1
     USERNAME_INDEX = 2
     CONTACT_INDEX = 4
     DATETIME_INDEX = 5
@@ -35,6 +36,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         login_records_created = 0
         server_users_created = 0
+        servers_created = 0
 
         with open(options['file']) as f:
             reader = csv.reader(f)
@@ -63,19 +65,28 @@ class Command(BaseCommand):
                     print('failed to parse {}'.format(raw_login_datetime))
                     continue
 
-                server_user, created = ServerUser.objects.get_or_create(
+                server_user, user_created = ServerUser.objects.get_or_create(
                     username=username)
-                if created:
+                if user_created:
                     server_users_created += 1
 
                 contact_info = row[self.CONTACT_INDEX]
                 server_user.add_contact_info(contact_info)
 
+                server, server_created = Server.objects.get_or_create(
+                    ip=self.SERVER_IP_INDEX
+                )
+                if server_created:
+                    servers_created += 1
+
                 LoginRecord.objects.create(server_user=server_user,
-                                           datetime=parsed_datetime)
+                                           datetime=parsed_datetime,
+                                           server=server)
                 login_records_created += 1
 
         self.stdout.write("{} new server users created.".format(
                           server_users_created))
+        self.stdout.write("{} new servers created.".format(
+                          servers_created))
         self.stdout.write("{} login records created.".format(
                           login_records_created))
