@@ -59,3 +59,11 @@ class ServerTestCase(TestCase):
         retrieved_server = Server.objects.get(pk=server.pk)
 
         self.assertEqual(retrieved_server.ip, '255.255.255.255')
+
+    def test_add_name_to_server(self):
+        server = Server.objects.create(ip='255.255.255.255')
+        server.name = 'my-server'
+        server.save()
+        retrieved_server = Server.objects.get(pk=server.pk)
+
+        self.assertEqual(retrieved_server.name, 'my-server')
