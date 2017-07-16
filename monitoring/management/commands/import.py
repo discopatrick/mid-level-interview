@@ -8,6 +8,8 @@ from monitoring.models import LoginRecord, ServerUser, Server
 
 class Command(BaseCommand):
 
+    help = 'Imports the specified CSV file'
+
     SERVER_NAME_INDEX = 0
     SERVER_IP_INDEX = 1
     USERNAME_INDEX = 2
@@ -34,7 +36,13 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('file')
 
+
     def handle(self, *args, **options):
+        """
+        TODO: there is too much code in this function.
+        Separate out into helper functions, or into a reusable library.
+        """
+
         login_records_created = 0
         server_users_created = 0
         servers_created = 0
@@ -42,6 +50,8 @@ class Command(BaseCommand):
         with open(options['file']) as f:
             reader = csv.reader(f)
             first_line = True
+
+            # TODO: Handle when two consecutive rows represent a single login.
 
             for row in reader:
                 if first_line:

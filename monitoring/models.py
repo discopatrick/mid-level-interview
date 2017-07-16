@@ -10,10 +10,14 @@ class ServerUser(models.Model):
 
     username = models.CharField(default='', max_length=30)
     email = models.EmailField(null=True, blank=True)
+    # TODO: add phone number field
 
     def add_contact_info(self, info):
         if self.EMAIL_REGEX.match(info):
             self.email = info
+            
+        # TODO: also handle when info matches a phone number
+
         self.save()
 
 
