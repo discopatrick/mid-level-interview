@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.utils import timezone
 
-from .models import LoginRecord, ServerUser
+from .models import LoginRecord, ServerUser, Server
 
 
 class LoginRecordTestCase(TestCase):
@@ -45,3 +45,9 @@ class ServerUserTestCase(TestCase):
         user.add_contact_info(user_email_address)
 
         self.assertEqual(user.email, user_email_address)
+
+
+class ServerTestCase(TestCase):
+
+    def test_create_server(self):
+        user = Server.objects.create()

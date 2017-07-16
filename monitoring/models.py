@@ -21,3 +21,7 @@ class LoginRecord(models.Model):
 
     server_user = models.ForeignKey(ServerUser)
     datetime = models.DateTimeField()
+
+
+class Server(models.Model):
+    pass
