@@ -38,3 +38,7 @@ class ServerUserTestCase(TestCase):
         retrieved_user = ServerUser.objects.get(pk=user.pk)
 
         self.assertEqual(retrieved_user.username, 'patrick')
+
+    def test_add_contact_info_to_user(self):
+        user = ServerUser.objects.create(username='patrick')
+        user.add_contact_info('example@example.com')
