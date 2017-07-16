@@ -74,7 +74,7 @@ class Command(BaseCommand):
                 server_user.add_contact_info(contact_info)
 
                 server, server_created = Server.objects.get_or_create(
-                    ip=self.SERVER_IP_INDEX
+                    ip=row[self.SERVER_IP_INDEX]
                 )
                 if server_created:
                     servers_created += 1
