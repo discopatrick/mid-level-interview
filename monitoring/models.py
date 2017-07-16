@@ -15,7 +15,7 @@ class ServerUser(models.Model):
     def add_contact_info(self, info):
         if self.EMAIL_REGEX.match(info):
             self.email = info
-            
+
         # TODO: also handle when info matches a phone number
 
         self.save()
