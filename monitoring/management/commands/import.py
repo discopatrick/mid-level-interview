@@ -36,7 +36,6 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('file')
 
-
     def handle(self, *args, **options):
         """
         TODO: there is too much code in this function.
